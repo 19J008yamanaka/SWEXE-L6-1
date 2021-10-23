@@ -10,11 +10,17 @@
   </head>
 
   <body>
+    <p>
+    <% if flash[:notice] %>
+      <%= flash[:notice] %>
+    <% end %>
+    </p>
+    
     <%= yield %>
 
     <p>
-    <% if session[:login_uid] %>
-      ログイン中（<%= session[:login_uid] %>さん）
+    <% if current_user %>
+      ログイン中（<%= current_user.uid %>さん）
     <% else %>
       ログインしていません
     <% end %>
